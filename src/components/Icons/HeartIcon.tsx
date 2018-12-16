@@ -1,5 +1,4 @@
 import React from 'react';
-import theme from '../theme';
 import SvgIcon, { SvgIconProps } from './SvgIcon';
 
 const HeartIcon: React.SFC<SvgIconProps> = props => {
@@ -23,7 +22,7 @@ const HeartIcon: React.SFC<SvgIconProps> = props => {
   );
 };
 HeartIcon.defaultProps = {
-  color: theme.colors.brickred.main,
+  color: 'brickred',
 };
 
 export default HeartIcon;

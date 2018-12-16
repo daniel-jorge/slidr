@@ -1,13 +1,14 @@
 import React from 'react';
 
-import styles from './styles.module.css';
+import { useTheme } from '../theme';
 
 interface HeaderProps {
   children: React.ReactNode;
 }
 
 const Header: React.FunctionComponent<HeaderProps> = ({ children }) => {
-  return <div className={styles.root}>{children}</div>;
+  const theme = useTheme();
+  return <div className={theme.header_root}>{children}</div>;
 };
 
 export default Header;

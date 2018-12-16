@@ -1,13 +1,14 @@
 import React from 'react';
 
-import styles from './styles.module.css';
+import { useTheme } from '../theme';
 
 interface BackgroundProps {
   children: React.ReactNode;
 }
 
 const Background: React.SFC<BackgroundProps> = ({ children }) => {
-  return <div className={styles.root}>{children}</div>;
+  const theme = useTheme();
+  return <div className={theme.root_background}>{children}</div>;
 };
 
 export default Background;

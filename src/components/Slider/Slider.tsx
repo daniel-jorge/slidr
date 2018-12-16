@@ -5,9 +5,10 @@ import useKeyboardNavigation from '../utils/useKeyboardNavigation';
 import Background from '../Background';
 import Header from '../Header';
 import Slide from '../Slide/Slide';
-import styles from './styles.module.css';
+import { context } from '../theme';
 
 export interface SliderDocumentConfig {
+  theme: any;
   header?: React.ReactNode;
   background?: React.ReactNode;
   slides: any[];
@@ -23,7 +24,7 @@ function toPages(slides: any) {
   });
 }
 
-const Slider: React.SFC<SliderProps> = ({ document: { header, background, slides } }) => {
+const Slider: React.SFC<SliderProps> = ({ document: { header, background, slides, theme } }) => {
   const pages = useMemo(() => toPages(slides), [slides]);
 
   const { step, keyCode } = useKeyboardNavigation({
@@ -42,19 +43,21 @@ const Slider: React.SFC<SliderProps> = ({ document: { header, background, slides
   });
 
   return (
-    <div className={styles.slider}>
-      {header && <Header>{header}</Header>}
-      {background && <Background>{background}</Background>}
-      {transitions.map(({ item, props, key }) => {
-        return (
-          <animated.div key={key} style={{ ...props }} className={styles.animated}>
-            <Slide background={item.background} header={item.header}>
-              {item.content}
-            </Slide>
-          </animated.div>
-        );
-      })}
-    </div>
+    <context.Provider value={theme}>
+      <div className={theme.slider_root}>
+        {header && <Header>{header}</Header>}
+        {background && <Background>{background}</Background>}
+        {transitions.map(({ item, props, key }) => {
+          return (
+            <animated.div key={key} style={{ ...props }} className={theme.slider_animated}>
+              <Slide background={item.background} header={item.header}>
+                {item.content}
+              </Slide>
+            </animated.div>
+          );
+        })}
+      </div>
+    </context.Provider>
   );
 };
 

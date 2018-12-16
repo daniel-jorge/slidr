@@ -1,13 +1,14 @@
 import React from 'react';
-import useKeyboardNavigation from '../utils/useKeyboardNavigation';
 
-import styles from './styles.module.css';
+import { useTheme } from '../theme';
+import useKeyboardNavigation from '../utils/useKeyboardNavigation';
 
 interface ContentProps {
   children: any;
 }
 
 const Content: React.SFC<ContentProps> = ({ children }) => {
+  const theme = useTheme();
   const items =
     React.Children.count(children) === 1 && children.type === React.Fragment ? children.props.children : children;
   const { step } = useKeyboardNavigation({
@@ -16,7 +17,7 @@ const Content: React.SFC<ContentProps> = ({ children }) => {
     maxStep: items.length,
   });
   return (
-    <div className={styles.root}>
+    <div className={theme.content_root}>
       {React.Children.map(items, (child: React.ReactElement<any>, index: number) => {
         if (
           child &&
