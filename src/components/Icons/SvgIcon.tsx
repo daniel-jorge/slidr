@@ -1,5 +1,7 @@
+import classnames from 'classnames';
 import React from 'react';
-import theme, { ThemeSize } from '../theme';
+
+import { ThemeSize, useTheme } from '../theme';
 
 export interface SvgIconProps {
   className?: string;
@@ -12,16 +14,24 @@ export interface SvgIconBaseProps extends SvgIconProps {
   viewBox: string;
 }
 
-const SvgIcon: React.FunctionComponent<SvgIconBaseProps> = ({ children, size, ...rest }) => {
+const SvgIcon: React.FunctionComponent<SvgIconBaseProps> = ({
+  className: propClassName,
+  children,
+  color,
+  size,
+  ...rest
+}) => {
+  const theme = useTheme();
+  const className = classnames(theme[`icon_size_${size}`], theme[`text_color_${color}`], propClassName);
   return (
-    <svg height={theme.sizes[size]} {...rest}>
+    <svg className={className} {...rest}>
       {children}
     </svg>
   );
 };
 SvgIcon.defaultProps = {
   size: 'default',
-  color: theme.colors.lightgrey.main,
+  color: 'lightgrey',
 };
 
 export default SvgIcon;

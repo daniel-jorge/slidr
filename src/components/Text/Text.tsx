@@ -1,27 +1,26 @@
+import classnames from 'classnames';
 import React from 'react';
 
-import theme, { ColorMap, ThemeSize } from '../theme';
+import { useTheme } from '../theme';
+import { ThemeSize } from '../theme';
 
 interface TextProps {
   children: React.ReactNode;
-  color?: keyof ColorMap;
+  color?: string;
   size?: ThemeSize;
   inverted?: boolean;
 }
 
 const Text: React.FunctionComponent<TextProps> = ({ children, color, inverted, size }) => {
-  const style: React.CSSProperties = {
-    color: theme.colors[color!].main,
-    fontSize: theme.sizes[size!],
-    lineHeight: '1.20em',
-  };
-  if (inverted) {
-    style.backgroundColor = theme.colors[color!].main;
-    style.color = '#333';
-    style.paddingTop = '.18em';
-  }
+  const theme = useTheme();
 
-  return <span style={style}>{children}</span>;
+  const className = classnames(
+    theme.text_root,
+    theme[`text_size_${size}`],
+    theme[`text_color_${color}${inverted ? '_inverted' : ''}`],
+  );
+
+  return <span className={className}>{children}</span>;
 };
 
 Text.defaultProps = {
