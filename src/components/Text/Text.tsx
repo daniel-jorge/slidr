@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import React from 'react';
 
-import { useTheme } from '../theme';
-import { ThemeSize } from '../theme';
+import { useTheme } from '../Theme';
+import { ThemeSize } from '../Theme';
 
 interface TextProps {
   children: React.ReactNode;

@@ -1,21 +1,27 @@
 import classnames from 'classnames';
 import React from 'react';
 
-import { useTheme } from '../theme';
+import { useTheme, ThemeAlignment } from '../Theme';
 
 interface ParagraphProps {
-  alignment?: 'left' | 'center' | 'right';
+  className?: string;
+  alignment?: ThemeAlignment;
   children: React.ReactNode;
   fullWidth?: boolean;
   step?: number;
 }
 
-const Paragraph: React.FunctionComponent<ParagraphProps> = ({ alignment, children, fullWidth }) => {
+const Paragraph: React.FunctionComponent<ParagraphProps> = ({ alignment, className, children, fullWidth }) => {
   const theme = useTheme();
-  const className = classnames(theme.paragraph_root, theme[`paragraph_align_${alignment}`], {
-    [theme.paragraph_full_width]: fullWidth,
-  });
-  return <div className={className}>{children}</div>;
+  const cn = classnames(
+    theme.paragraph_root,
+    theme[`paragraph_align_${alignment}`],
+    {
+      [theme.paragraph_full_width]: fullWidth,
+    },
+    className,
+  );
+  return <div className={cn}>{children}</div>;
 };
 Paragraph.defaultProps = {
   alignment: 'center',

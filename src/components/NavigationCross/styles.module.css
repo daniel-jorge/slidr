@@ -1,0 +1,66 @@
+.root {
+  padding: 16px;
+  display: grid;
+  grid-template-areas:
+    '. up .'
+    'previous . next'
+    '. down .';
+}
+
+.up {
+  grid-area: up;
+}
+.down {
+  grid-area: down;
+}
+.previous {
+  grid-area: previous;
+}
+.next {
+  grid-area: next;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  /* Remove grey highlight */
+  -webkit-tap-highlight-color: transparent;
+  /* We disable the focus ring for mouse, touch and keyboard users. */
+  outline: none;
+  border: 0;
+  /* Remove the margin in Safari */
+  margin: 0;
+  border-radius: var(--widget-border-radius);
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-decoration: none;
+  /* So we take precedent over the style of a native <a /> element. */
+  color: inherit;
+  transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
+  text-transform: uppercase;
+
+  box-sizing: border-box;
+  /* height: var(--button-size-normal); */
+  line-height: 1;
+}
+
+.button::-moz-focus-inner {
+  /* Remove Firefox dotted outline. */
+  border-style: none;
+}
+
+.button:disabled {
+  /* Disable link interactions */
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.1;
+}

@@ -1,0 +1,1 @@
+import SvgText from './SvgText';
