@@ -1,5 +1,6 @@
 :root {
-  --bg-color: #333;
+  --bg-color: #ec87c0;
+
   --size-smallest: 1rem;
   --size-smaller: 1.5rem;
   --size-small: 2rem;
@@ -8,6 +9,8 @@
   --size-bigger: 4.5rem;
   --size-biggest: 5rem;
   --size-giant: 9rem;
+
+  --padding-default: 2rem;
 }
 
 @font-face {
@@ -72,6 +75,7 @@
 
 .paragraph_root {
   text-align: center;
+  margin-bottom: 16px;
 }
 
 .paragraph_align_center {
@@ -277,4 +281,45 @@
 }
 .icon_size_giant {
   height: var(--size-giant);
+}
+
+.image_size_smallest {
+  width: 10%;
+  height: auto;
+}
+.image_size_smaller {
+  width: 20%;
+  height: auto;
+}
+.image_size_small {
+  width: 30%;
+  height: auto;
+}
+.image_size_default {
+  width: 40%;
+  height: auto;
+}
+.image_size_big {
+  width: 50%;
+  height: auto;
+}
+.image_size_bigger {
+  width: 60%;
+  height: auto;
+}
+.image_size_biggest {
+  width: 70%;
+  height: auto;
+}
+.image_size_giant {
+  width: 80%;
+  height: auto;
+}
+
+.images_background_color {
+  background-color: #ddd;
+}
+
+.padding-default {
+  padding: var(--padding-default);
 }

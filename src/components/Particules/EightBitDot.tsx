@@ -6,7 +6,7 @@ interface EightBitDotProps {
   color?: string;
   size?: number;
   glowColor?: string;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 const EightBitDot: React.SFC<EightBitDotProps> = ({ color, glowColor, size, style }) => {

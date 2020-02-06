@@ -1,27 +1,25 @@
 import React from 'react';
-import { Spring } from 'react-spring';
+import { useSpring, animated, config } from 'react-spring';
 
 interface ZoomInProps {
   children: React.ReactNode;
   onEnd?: () => void;
-  step?: number;
   xValue?: number;
   yValue?: number;
 }
 
 const ZoomIn: React.FunctionComponent<ZoomInProps> = ({ children, onEnd, xValue, yValue }) => {
-  const style: React.CSSProperties = {};
-  const from = { opacity: 0, transform: `scale3d(${xValue},${yValue},1)` };
-  const to = { opacity: 1, transform: 'scale3d(1,1,1)' };
-  return (
-    <Spring from={from} to={to} config={{ tension: 30, friction: 10 }} onRest={onEnd}>
-      {props => <div style={{ ...props, ...style }}>{children}</div>}
-    </Spring>
-  );
+  const props = useSpring({
+    config: config.stiff,
+    from: { opacity: 0, transform: `scale3d(${xValue},${yValue},1)` },
+    to: { opacity: 1, transform: 'scale3d(1,1,1)' },
+    onRest: onEnd,
+  });
+  return <animated.div style={props}>{children}</animated.div>;
 };
 ZoomIn.defaultProps = {
-  xValue: 2,
-  yValue: 2,
+  xValue: 1.5,
+  yValue: 1.5,
 };
 
 export default ZoomIn;

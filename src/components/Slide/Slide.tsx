@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import Background from '../Background';
 import Content from '../Content';
 import Header from '../Header';
-import { useTheme } from '../theme';
+import { useTheme } from '../Theme';
 
 interface SlideProps {
   children: React.ReactNodeArray;

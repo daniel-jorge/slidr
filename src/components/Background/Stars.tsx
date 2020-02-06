@@ -1,12 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Transition } from 'react-spring';
+// import { Transition } from 'react-spring';
+import { animated, useKeyframes } from 'react-spring/hooks';
 import EightBitDot from '../Particules/EightBitDot';
 import EightBitStar from '../Particules/EightBitStar';
 
 // const items = [(props: React.CSSProperties) => <EightBitDot style={props} color="#CCD1D9" />];
 
+const useScript = useKeyframes.spring({ onKeyframeRest: () => console.log('rest') }, async (next: any) => {
+  await next({
+    from: { opacity: 0, scale: 0 },
+  });
+  await next({ opacity: 1, scale: 1 });
+  await next({ opacity: 0, scale: 0 });
+});
+
 const useDots = () => {
-  const [stars, setStars] = useState<EightBitDot[]>([]);
+  const [stars, setStars] = useState<typeof EightBitDot[]>([]);
 
   useEffect(() => {
     const items = [];
@@ -39,7 +48,7 @@ const useAnimation = (onAnimationEnd: any) => {
     //
     ref.current!.addEventListener('animationend', handleEnd);
     return () => ref.current!.removeEventListener('animationend', handleEnd);
-  }, []);
+  }, [handleEnd]);
   return {
     ref,
   };

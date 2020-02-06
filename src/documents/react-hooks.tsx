@@ -5,12 +5,14 @@ import Stars from '../components/Background/Stars';
 import { HeartIcon } from '../components/Icons';
 import QuestionMarkIconIcon from '../components/Icons/QuestionMarkIcon';
 import Paragraph from '../components/Paragraph';
-import { SliderDocumentConfig } from '../components/Slider/Slider';
 import Text from '../components/Text';
 
+import Rotate from '../components/Animations/Rotate';
 import styles from './EightBits.module.css';
+import { SlidrDocument } from '../types';
 
-const document: SliderDocumentConfig = {
+const document: SlidrDocument = {
+  name: 'react-hooks',
   theme: styles,
   header: (
     <React.Fragment>
@@ -20,7 +22,7 @@ const document: SliderDocumentConfig = {
     </React.Fragment>
   ),
   background: <Stars />,
-  slides: [
+  pages: [
     {
       header: false,
       content: (
@@ -41,6 +43,170 @@ const document: SliderDocumentConfig = {
         </React.Fragment>
       ),
     },
+    // PAGE 2 - What problem does it solve
+    {
+      content: (
+        <>
+          <Paragraph>
+            <Text size="big" color="pinkrose">
+              React c'est cool mais...
+            </Text>
+          </Paragraph>
+          <Paragraph step={1}>
+            <ZoomIn xValue={1}>
+              <Text size="smaller">composant </Text>
+              <Text color="aqua" inverted={true}>
+                fonction &lt; classe
+              </Text>
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={2}>
+            <ZoomIn xValue={1}>
+              <Text color="grass" inverted={true}>
+                cycle de vie complexe
+              </Text>
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={2}>
+            <ZoomIn xValue={1}>
+              <Text size="smaller"> (willMount, didmount, didupdate...)</Text>
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={3}>
+            <ZoomIn xValue={1}>
+              <Text color="grapefruit" inverted={true}>
+                trop de paterns
+              </Text>
+              <Text size="smaller"> (H.O.C, render props...)</Text>
+            </ZoomIn>
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 3 - CODE
+    {
+      header: false,
+      content: (
+        <React.Fragment>
+          <Rotate>
+            <Paragraph>
+              <Text color="white" size="big">
+                exemples{' '}
+              </Text>
+              <Text color="sunflower" size="big" inverted={true}>
+                de code
+              </Text>
+            </Paragraph>
+          </Rotate>
+        </React.Fragment>
+      ),
+    },
+    // PAGE 4 - BASIC HOOKS
+    {
+      content: (
+        <>
+          <Paragraph>
+            <Text size="big" color="pinkrose">
+              Les hooks de base
+            </Text>
+          </Paragraph>
+          <Paragraph step={1}>
+            <Text>useState</Text>
+          </Paragraph>
+          <Paragraph step={2}>
+            <Text>useEffect</Text>
+          </Paragraph>
+          <Paragraph step={3}>
+            <Text>useContext</Text>
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 5 - ADDITIONAL HOOKS
+    {
+      content: (
+        <>
+          <Paragraph>
+            <Text size="big" color="pinkrose">
+              Les hooks additionnels
+            </Text>
+          </Paragraph>
+          <Paragraph step={1}>
+            <Text>useReducer</Text>
+          </Paragraph>
+          <Paragraph step={2}>
+            <Text>useCallback</Text>
+          </Paragraph>
+          <Paragraph step={3}>
+            <Text>useMemo</Text>
+          </Paragraph>
+          <Paragraph step={4}>
+            <Text>useRef</Text>
+          </Paragraph>
+          <Paragraph step={5}>
+            <Text>useImperativeHandler</Text>
+          </Paragraph>
+          <Paragraph step={6}>
+            <Text>useLayoutEffect</Text>
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 6 - Class -> hooks
+    {
+      content: (
+        <>
+          <Paragraph>
+            <Text size="big" color="pinkrose">
+              Hooks vs classes
+            </Text>
+          </Paragraph>
+          <Paragraph>
+            <Text size="smaller" color="aqua" inverted={true}>
+              constructor
+            </Text>
+            <Text size="small"> > useState</Text>
+          </Paragraph>
+          <Paragraph>
+            <Text size="smaller" color="aqua" inverted={true}>
+              getDerivedStateFromProps
+            </Text>
+            <Text size="small"> > Provoque une mise à jour pendant le render</Text>
+          </Paragraph>
+          <Paragraph>
+            <Text size="smaller" color="aqua" inverted={true}>
+              shouldComponentUpdate
+            </Text>
+            <Text size="small"> > React.memo</Text>
+          </Paragraph>
+          <Paragraph>
+            <Text size="smaller" color="aqua" inverted={true}>
+              ...DidMount
+            </Text>
+            <Text size="smaller">, </Text>
+            <Text size="smaller" color="aqua" inverted={true}>
+              ...DidUpdate
+            </Text>
+            <Text size="smaller">, </Text>
+            <Text size="smaller" color="aqua" inverted={true}>
+              ...WillUnmount
+            </Text>
+            <Text size="small"> > useEffect</Text>
+          </Paragraph>
+          <Paragraph>
+            <Text size="smaller" color="aqua" inverted={true}>
+              ...DidCatch
+            </Text>
+            <Text size="smaller">, </Text>
+            <Text size="smaller" color="aqua" inverted={true}>
+              getDerivedStateFromError
+            </Text>
+            <Text size="small"> > coming soon...</Text>
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 4 - QUESTIONS
     {
       content: (
         <React.Fragment>
@@ -55,7 +221,7 @@ const document: SliderDocumentConfig = {
               </Text>
             </ZoomIn>
           </Paragraph>
-          <Paragraph step={2} alignment="left" fullWidth={true}>
+          <Paragraph step={2}>
             <ZoomIn xValue={1}>
               <Text>quid des </Text>
               <Text color="aqua" inverted={true}>
@@ -63,7 +229,7 @@ const document: SliderDocumentConfig = {
               </Text>
             </ZoomIn>
           </Paragraph>
-          <Paragraph step={3} alignment="right" fullWidth={true}>
+          <Paragraph step={3}>
             <ZoomIn xValue={1}>
               <Text color="aqua" inverted={true}>
                 adoption

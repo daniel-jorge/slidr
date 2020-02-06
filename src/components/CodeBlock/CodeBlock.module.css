@@ -1,0 +1,9 @@
+.root {
+  text-align: left;
+  margin: 0;
+  font-size: var(--code-font-size);
+}
+
+.root > code {
+  padding: var(--code-block-padding);
+}

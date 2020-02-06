@@ -1,0 +1,182 @@
+import React from 'react';
+
+import ZoomIn from '../../components/Animations/ZoomIn';
+import Dots from '../../components/Background/Dots';
+import QuestionMarkIconIcon from '../../components/Icons/QuestionMarkIcon';
+import Paragraph from '../../components/Paragraph';
+
+import Text from '../../components/Text';
+
+import Rotate from '../../components/Animations/Rotate';
+import styles from './styles.module.css';
+import { SlidrDocument } from '../../slidr.types';
+
+import LernaText from './LernaText';
+import Dex from './Dex';
+import UseCases from './UseCases';
+import * as Texts from './Resources';
+import { SvgText } from '../../components/EightBitsFont/EightBitsFont';
+
+const document: SlidrDocument = {
+  theme: styles,
+  header: (
+    <React.Fragment>
+      <LernaText />
+    </React.Fragment>
+  ),
+  background: <Dots />,
+  pages: [
+    {
+      header: false,
+      content: (
+        <React.Fragment>
+          <Paragraph>
+            <LernaText size="biggest" />
+          </Paragraph>
+          <Paragraph>
+            <Dex />
+          </Paragraph>
+          {/* <Paragraph>
+            <CharA size="biggest" />
+            <CharA size="biggest" />
+            <CharA size="biggest" />
+          </Paragraph> */}
+        </React.Fragment>
+      ),
+    },
+    // PAGE 2 - CONTEXT
+    {
+      content: (
+        <>
+          <Paragraph>
+            <UseCases size="biggest" />
+          </Paragraph>
+          <Paragraph step={1}>
+            <ZoomIn xValue={1}>
+              <SvgText text="when you have related packages" size="small" color="#fc6e51" />
+              <br />
+              <SvgText text="(component library)" size="smaller" />
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={2}>
+            <ZoomIn xValue={1}>
+              <SvgText text="when you have a large application" size="small" color="#ffce54" />
+              <br />
+              <SvgText text="(micro services)" size="smaller" />
+            </ZoomIn>
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 3 - PROBLEMS
+    {
+      header: false,
+      content: (
+        <>
+          <Paragraph>
+            <Texts.Problems size="biggest" />
+          </Paragraph>
+          <Paragraph step={1}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Sharing components (without publishing to a registry)" size="small" color="#a0d468" />
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={2}>
+            <ZoomIn xValue={1}>
+              <Text color="aqua" size="smaller">
+                <SvgText text="Cross repository tests" size="small" color="#ffce54" />
+              </Text>
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={3}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Cross repository PR" size="small" color="#ac92ec" />
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={4}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Versionning / releases of related packages" size="small" color="#5d9cec" />
+            </ZoomIn>
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 4 - SOLUTION
+    {
+      content: (
+        <>
+          <Paragraph>
+            <Texts.Lerna size="biggest" />
+          </Paragraph>
+          <Paragraph step={1}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Repository structure" size="small" color="#fc6e51" />
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={2}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Bootstraping" size="small" color="#ffce54" />
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={3}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Cross package commands" size="small" color="#a0d468" />
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={4}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Versionning" size="small" color="#5d9cec" />
+            </ZoomIn>
+          </Paragraph>
+          <Paragraph step={5}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Publishing" size="small" color="#ac92ec" />
+            </ZoomIn>
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 5 - Who uses Lerna
+    {
+      content: (
+        <>
+          <Paragraph>
+            <Texts.WhoUsesLerna size="biggest" />
+          </Paragraph>
+          <Paragraph step={1}>
+            <ZoomIn xValue={1}>
+              <SvgText text="Babel, Create React App, Jest..." size="small" color="#ac92ec" />
+            </ZoomIn>
+          </Paragraph>
+          {/* <Paragraph step={2}>
+            <ZoomIn xValue={1}>
+              <SvgText text="At SocGen: use-datasource" size="small" color="#ac92ec" />
+            </ZoomIn>
+          </Paragraph> */}
+        </>
+      ),
+    },
+    // PAGE 6 - Questions
+    {
+      content: (
+        <>
+          <Paragraph>
+            <Texts.Questions size="biggest" />
+          </Paragraph>
+        </>
+      ),
+    },
+    // PAGE 7 - Thanx
+    {
+      content: (
+        <>
+          <Paragraph className="perspective-normal">
+            <Texts.Thanx size="biggest" className="spin" />
+          </Paragraph>
+        </>
+      ),
+    },
+  ],
+};
+
+export default document;
